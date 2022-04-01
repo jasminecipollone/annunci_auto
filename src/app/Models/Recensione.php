@@ -1,0 +1,17 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Recensione extends Model
+{
+    use HasFactory;
+    protected $table = 'recensioni';
+
+    public function annunci()
+    {
+        return $this->belongsTo(User::class);
+    }
+}
