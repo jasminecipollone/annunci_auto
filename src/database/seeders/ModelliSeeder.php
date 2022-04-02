@@ -1335,6 +1335,12 @@ class ModelliSeeder extends Seeder
       array('id' =>1312, 'marca_id' =>71, 'code' =>'GVS', 'nome' =>'GVS'),
       array('id' =>1313, 'marca_id' =>71, 'code' =>'GVX','nome' => 'GVX'),
       array('id' =>1314, 'marca_id' =>71, 'code' =>'YUOTH','nome' => 'Other Yugo Models'),
+      array('id' =>1315, 'marca_id' =>72, 'code' =>'Huayra','nome' => 'Huayra'),
+      array('id' =>1316, 'marca_id' =>72, 'code' =>'HuayraBC', 'nome' =>'Huayra BC'),
+      array('id' =>1317, 'marca_id' =>72, 'code' =>'HuayraRD', 'nome' =>'Huayra Roadster'),
+      array('id' =>1318, 'marca_id' =>72, 'code' =>'Zonda','nome' => 'Zonda'),
+      array('id' =>1319, 'marca_id' =>72, 'code' =>'ZondaRD','nome' => 'Zonda Roadster'),
+      array('id' =>1320, 'marca_id' =>72, 'code' =>'PAGOTH','nome' => 'Other Pagani Models'),
     );
     DB::table('modelli')->insert($models2);
     }

@@ -86,7 +86,8 @@ class MarcheSeeder extends Seeder
             array('id' =>68 , 'nome' => 'Triumph'),
             array('id' =>69 , 'nome' => 'Volkswagen'),
             array('id' =>70 , 'nome' => 'Volvo'),
-            array('id' =>71 , 'nome' => 'Yugo')
+            array('id' =>71 , 'nome' => 'Yugo'),
+            array('id' =>72 , 'nome' => 'Pagani')
           );
         DB::table('marche')->insert($makes);
     }

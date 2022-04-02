@@ -5,7 +5,7 @@
 
 
         <form action="{{ route('annunci.store') }}" method="post" enctype="multipart/form-data">
-            <div id="form1">
+            <div id="form1" class="">
             @csrf
             <h4>Stato Veicolo</h4>
             <div class="form-check form-check-inline">
@@ -242,11 +242,13 @@
 
 
             <br>
-            <input type="submit" name="Invia" class="btn btn-danger" />
+            
+            <input type="submit" name="Invia" class="btn btn-danger" value="Invia"/>
         </div>  
 
         </form>
-        <input type="submit" name="Continua" onclick="form2()" id="btn1" class="btn btn-danger" />
+        <button class="btn btn-secondary d-none" id="back" onclick="form1()">Indietro</button>
+        <input type="submit" name="Continua" onclick="form2()" id="btn1" class="btn btn-danger" value="Continua"/>
 </div>
 @endsection
 
@@ -270,8 +272,17 @@
     }
 
 function form2(){
-        document.getElementById('form1').style.display = "none";
+        document.getElementById('form1').classList.add("d-none");
         document.getElementById('btn1').classList.add("d-none");
         document.getElementById('form2').classList.remove("d-none");
+        document.getElementById('back').classList.remove("d-none");
     }
+function form1(){
+        document.getElementById('form1').classList.remove("d-none");
+        document.getElementById('btn1').classList.remove("d-none");
+        document.getElementById('form2').classList.add("d-none");
+        document.getElementById('back').classList.add("d-none");
+    }
+
+
 </script>
