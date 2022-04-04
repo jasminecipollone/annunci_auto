@@ -76,7 +76,7 @@
     @yield('content')
 
 
-    <footer class="footer dark bg-dark">
+    <footer class="footer dark bg-dark" style="position:absolute; bottom:0; width:100%;">
 
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
             © 2022 Copyright:

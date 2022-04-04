@@ -1,64 +1,94 @@
 @extends('layouts.template')
 @section('content')
 <div class="container" style="padding-top:60px">
-    <h1 class="text-center">Vendi il tuo Veicolo</h1>
+    <h1 class="text-center my-3">Vendi il tuo Veicolo</h1>
 
 
         <form action="{{ route('annunci.store') }}" method="post" enctype="multipart/form-data">
             <div id="form1" class="">
             @csrf
-            <h4>Stato Veicolo</h4>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="stato" id="inlineRadio1" value="nuovo">
-                <label class="form-check-label" for="inlineRadio1">Nuovo</label>
+            <div class="text-center mb-3">
+              <h4>Stato Veicolo</h4>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="stato" id="inlineRadio1" value="nuovo">
+                  <label class="form-check-label" for="inlineRadio1">Nuovo</label>
+              </div>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="stato" id="inlineRadio2" value="usato">
+                  <label class="form-check-label" for="inlineRadio2">Usato</label>
+              </div>
+          </div>
+            
+          <div class="row">
+              <div class="col">
+                <label class="form-check-label" for="marca"><h4>Marca</h4></label>
+                <select class="form-select" aria-label="Default select example" name="marca" id="marca" onchange="mostramodelli()">
+                    <option>Marca</option>
+                    @foreach ($marche as $marca)
+                        <option value="{{ $marca->id }}" name="marca">{{ $marca->nome }}</option>
+                    @endforeach
+                </select>
+              </div>
+              <div class="col">
+                <label class="form-check-label" for="marca"><h4>Modello</h4></label>
+                <select class="form-select" aria-label="Default select example" name="modello" id="modello"></select>
+              </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <h4>Prezzo</h4>
+              <input type="text" name="prezzo" class="form-control" />
+          </div>
+            <div class="col">
+              <h4>Chilometraggio</h4>
+              <input type="text" name="chilometraggio" class="form-control" />
             </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="stato" id="inlineRadio2" value="usato">
-                <label class="form-check-label" for="inlineRadio2">Usato</label>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <h4>Immatricolazione</h4>
+              <input type="date" name="immatricolazione" class="form-control" />
             </div>
-            <br>
-            <label class="form-check-label" for="marca"><h4>Marca</h4></label>
-            <select class="form-select" aria-label="Default select example" name="marca" id="marca" onchange="mostramodelli()">
-                <option>Marca</option>
-                @foreach ($marche as $marca)
-                    <option value="{{ $marca->id }}" name="marca">{{ $marca->nome }}</option>
-                @endforeach
-            </select>
-            <label class="form-check-label" for="marca"><h4>Modello</h4></label>
-            <select class="form-select" aria-label="Default select example" name="modello" id="modello">
-               
-            </select>
+            <div class="col">
+              <h4>Potenza</h4>
+              <input type="text" name="potenza" class="form-control" />
+            </div>
+          </div>
 
+          <div class="row">
+            <div class="col">
+              <h4>Cilindrata</h4>
+              <input type="text" name="cilindrata" class="form-control" />
+            </div>
+            <div class="col">
+              <h4>Colore</h4>
+              <input type="text" name="colore" class="form-control" />
+            </div>
+          </div>
 
-            <h4>Prezzo</h4>
-            <input type="text" name="prezzo" class="form-control" />
+          <div class="row">
+            <div class="col">
+              <h4>Alimentazione</h4>
+              <input type="text" name="alimentazione" class="form-control" />
+            </div>
+            <div class="col">
+              <h4>Carrozzeria</h4>
+              <input type="text" name="carrozzeria" class="form-control" />
+            </div>
+          </div>
 
-            <h4>Chilometraggio</h4>
-            <input type="text" name="chilometraggio" class="form-control" />
-
-            <h4>Immatricolazione</h4>
-            <input type="date" name="immatricolazione" class="form-control" />
-
-            <h4>Potenza</h4>
-            <input type="text" name="potenza" class="form-control" />
-
-            <h4>Cilindrata</h4>
-            <input type="text" name="cilindrata" class="form-control" />
-
-            <h4>Colore</h4>
-            <input type="text" name="colore" class="form-control" />
-
-            <h4>Alimentazione</h4>
-            <input type="text" name="alimentazione" class="form-control" />
-
-            <h4>Carrozzeria</h4>
-            <input type="text" name="carrozzeria" class="form-control" />
-
-            <h4>Descrizione</h4>
-            <input type="textarea" name="descrizione" class="form-control" />
-
-            <h4>Indirizzo</h4>
-            <input type="text" name="indirizzo" class="form-control" />
+          <div class="row">
+            <div class="col">
+              <h4>Descrizione</h4>
+              <input type="textarea" name="descrizione" class="form-control" />
+            </div>
+            <div class="col">
+              <h4>Indirizzo</h4>
+              <input type="text" name="indirizzo" class="form-control" />
+            </div>
+          </div>
             <br>
         </div>
 
