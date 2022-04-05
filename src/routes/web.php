@@ -3,6 +3,8 @@
 use App\Http\Controllers\AnnunciController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -32,9 +34,25 @@ Route::get('/dashboard', function () {
 Route::get('/annunci', [AnnunciController::class, 'index'])->name('annunci.index');
 Route::get('/annunci/create', [AnnunciController::class, 'create'])->name('annunci.create');
 
+//API SELECT MODELLI AUTO E REGIONE PROVINCIA COMUNE
 Route::get('/annuncimodelli/{id}', function ($id) {
     $modello = App\Models\Modello::where('marca_id',$id)->get();
     return response()->json($modello);
+});
+
+Route::get('/provincia/{regione}', function ($regione) {
+    $province = DB::table('comuni')
+                    ->select('provincia')
+                    ->where('regione', $regione)
+                    ->distinct()
+                    ->get();
+
+    return response()->json($province);
+});
+
+Route::get('/comune/{provincia}', function ($provincia) {
+    $comuni = App\Models\Comune::where('provincia', $provincia)->get();
+    return response()->json($comuni);
 });
 
 Route::post('annunci/store', [AnnunciController::class, 'store'])->name('annunci.store');

@@ -10,9 +10,9 @@ class Modello extends Model
     use HasFactory;
     protected $table = 'modelli';
 
-    public function marca()
+    public function marche()
     {
-        return $this->belongsTo(Marca::class);
+        return $this->belongsTo(Marca::class, 'marca_id', 'id');
     }
     public function annunci()
     {

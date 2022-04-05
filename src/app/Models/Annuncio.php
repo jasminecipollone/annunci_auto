@@ -22,12 +22,12 @@ class Annuncio extends Model
 
     public function modelli()
     {
-        return $this->belongsTo(Modello::class);
+        return $this->belongsTo(Modello::class, 'modello_id', 'id');
     }
 
     public function dettagli()
     {
-        return $this->hasOne(Dettagli::class);
+        return $this->belongsTo(Dettagli::class, 'dettagli.id', 'annunci.id');
     }
 
 }

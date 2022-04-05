@@ -75,15 +75,14 @@
     
     @yield('content')
 
+<!--
+    <footer class="footer dark bg-dark fixed-bottom mt-3">
 
-    <footer class="footer dark bg-dark" style="position:absolute; bottom:0; width:100%;">
-
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-            © 2022 Copyright:
+        <div class="text-center" style="background-color: rgba(0, 0, 0, 0.2);">
             <p class="text-white">Laravel Project</p>
         </div>
 
-    </footer>
+    </footer> -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
