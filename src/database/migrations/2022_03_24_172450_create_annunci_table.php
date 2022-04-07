@@ -30,6 +30,7 @@ class CreateAnnunciTable extends Migration
             $table->bigInteger('user_id');
             $table->bigInteger('modello_id');
             $table->bigInteger('comune_id');
+            $table->string('immagine');
             $table->timestamps();
         });
     }

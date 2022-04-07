@@ -14,7 +14,7 @@
 
                 <div class="row g-0">
                     <div class="col-md-3 d-flex justify-content-center align-items-center">
-                        <img src="/img/mercedes-amg-gt-facelift.jpg" class="img-fluid">
+                        <img src="/storage/immagini/{{ $annuncio->immagine }}" class="img-fluid">
                     </div>
                     <div class="col-md-9 d-flex flex-column">
                         <h2 class="card-text px-3 mt-1"> <b> {{ $annuncio->prezzo }} €</b></h2>
@@ -50,7 +50,7 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="card-body">
-                                    <p class="card-text">Potenza: {{ $annuncio->potenza }}</p>
+                                    <p class="card-text">Potenza: {{ $annuncio->potenza }} cv</p>
                                     <hr>
                                     @php
                                         if (!empty($annuncio->dettagli->cambio)) {
@@ -58,7 +58,7 @@
                                         }
                                     @endphp
                                     
-                                    <p class="card-text">Cilindrata: {{ $annuncio->cilindrata }}</p>
+                                    <p class="card-text">Cilindrata: {{ $annuncio->cilindrata }} cc</p>
                                 </div>
                             </div>
                         </div>
@@ -74,4 +74,8 @@
             </div>
         @endforeach
     </div>
+<div class="col d-flex justify-content-center">
+    {{ $annunci->links() }}
+</div>
+   
 @endsection

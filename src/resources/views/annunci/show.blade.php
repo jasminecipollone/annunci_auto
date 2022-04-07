@@ -17,7 +17,7 @@
         <hr>
 
         <div class="row mt-3">
-            <img src="/img/mercedes-amg-gt-facelift.jpg" class="img-fluid">
+            <img src="/storage/immagini/{{ $annuncio->immagine }}" class="img-fluid">
         </div>
 
         <hr>
@@ -48,8 +48,12 @@
 
                 <br>
                 <p><b>Motore e Trazione</b></p>
-                <p>Tipo di Cambio: {{ $dettagli->cambio }}</p>
-                <p>Cilindrata: {{ $annuncio->cilindrata }}</p>
+                @php
+                if (!empty($annuncio->dettagli->cambio)) {
+                        echo '<p>Tipo di Cambio: ' . $annuncio->dettagli->cambio . '</p>';
+                    }
+                @endphp
+                <p>Cilindrata: {{ $annuncio->cilindrata }} cc</p>
                 <p>Potenza: {{ $annuncio->potenza }} cv</p>
 
                 <br>
@@ -78,9 +82,13 @@
                 if (!empty($annuncio->dettagli->rivestimenti)) {
                     echo '<p>Rivestimenti: ' . $annuncio->dettagli->rivestimenti . '</p>';
                 }
+                if (!empty($annuncio->dettagli->porte)) {
+                    echo '<p>Porte: ' . $annuncio->dettagli->porte . '</p>';
+                }
+                if (!empty($annuncio->dettagli->posti)) {
+                    echo '<p>Posti a sedere: ' . $annuncio->dettagli->posti . '</p>';
+                }
                 @endphp
-                <p>Porte: {{ $dettagli->porte }}</p>
-                <p>Posti a sedere: {{ $dettagli->posti }}</p>
             </div>
         </div>
 

@@ -1,7 +1,7 @@
 @extends('layouts.template')
 @section('content')
-<div class="container" style="padding-top:60px">
-    <h1 class="text-center my-3">Vendi il tuo Veicolo</h1>
+<div class="container" style="padding-top:80px">
+    <h1 class="text-center">Vendi il tuo Veicolo</h1>
 
     @if ($errors->any())
     <div class="alert alert-danger">
@@ -104,8 +104,14 @@
 
           <div class="row">
             <div class="col">
-              <h4>Alimentazione</h4>
-              <input type="text" name="alimentazione" class="form-control" />
+              <label class="form-check-label" for="alimentazione"><h4>Alimentazione</h4></label>
+                <select class="form-select" aria-label="Default select example" name="alimentazione" id="alimentazione">
+                    <option value="benzina" name="alimentazione">Benzina</option>
+                    <option value="diesel" name="alimentazione">Diesel</option>
+                    <option value="metano" name="alimentazione">Metano</option>
+                    <option value="gpl" name="alimentazione">Gpl</option>
+                    <option value="elettrica" name="alimentazione">Elettrica</option>
+                </select>
             </div>
             <div class="col">
               <h4>Carrozzeria</h4>
@@ -175,6 +181,15 @@
             <div class="col">
               <h4>Emissioni</h4>
               <input type="text" name="emissioni" class="form-control" />
+            </div>
+          </div>
+
+          <br>
+
+          <div class="row">
+            <div class="col">
+              <label for="immagine" class="form-label">Seleziona una Foto</label>
+              <input class="form-control" type="file" id="immagine" name="immagine">
             </div>
           </div>
           

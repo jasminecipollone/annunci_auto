@@ -12,12 +12,14 @@ use App\Models\Comune;
 use App\Models\Dettagli;
 use Illuminate\Support\Facades\DB;
 use PhpParser\Node\Expr\PostInc;
+use Illuminate\Support\Facades\Auth;
 
 class AnnunciController extends Controller
 {
     public function index()
     {
-        $annunci = Annuncio::all();
+        $annunci = Annuncio::orderByDesc('created_at')
+                            ->paginate(5);
         $modelli = Modello::all();
         
         return view('annunci.index', ['annunci' => $annunci, 'modelli' => $modelli ]);
@@ -57,19 +59,23 @@ class AnnunciController extends Controller
         ]);
 
         $annuncio = new Annuncio();
-        $annuncio->stato = $request->stato;
+        $annuncio->stato = Ucwords($request->stato);
         $annuncio->prezzo = $request->prezzo;
         $annuncio->chilometraggio = $request->chilometraggio;
         $annuncio->immatricolazione = $request->immatricolazione;
         $annuncio->potenza = $request->potenza;
         $annuncio->cilindrata = $request->cilindrata;
-        $annuncio->colore = $request->colore;
-        $annuncio->alimentazione = $request->alimentazione;
-        $annuncio->carrozzeria = $request->carrozzeria;
+        $annuncio->colore = Ucwords($request->colore);
+        $annuncio->alimentazione = Ucwords($request->alimentazione);
+        $annuncio->carrozzeria = Ucwords($request->carrozzeria);
         $annuncio->descrizione = $request->descrizione;
-        $annuncio->indirizzo = $request->indirizzo;
+        $annuncio->indirizzo = Ucwords($request->indirizzo);
 
-        $annuncio->user_id = 1;
+        $path = $request->file('immagine')->store('public/immagini');
+        $nomeimmagine = explode("/", $path);
+        $annuncio->immagine = $nomeimmagine[2];
+
+        $annuncio->user_id = Auth::id();
         $annuncio->modello_id = $request->modello;
         $annuncio->comune_id = $request->comune;
         $annuncio->titolo = $request->modello;
@@ -78,13 +84,13 @@ class AnnunciController extends Controller
         $dettagli = new Dettagli();
         $dettagli->id = $annuncio->id;
         $dettagli->proprietari = $request->proprietari;
-        $dettagli->cambio = $request->cambio;
-        $dettagli->vernice = $request->vernice;
-        $dettagli->rivestimenti = $request->rivestimenti;
+        $dettagli->cambio = Ucwords($request->cambio);
+        $dettagli->vernice = Ucwords($request->vernice);
+        $dettagli->rivestimenti = Ucwords($request->rivestimenti);
         $dettagli->posti = $request->posti;
         $dettagli->porte = $request->porte;
         $dettagli->consumi = $request->consumi;
-        $dettagli->emissioni = $request->emissioni;
+        $dettagli->emissioni = Ucwords($request->emissioni);
         /*$dettagli->equipaggiamento = [$request->alzacristalli, $request->clima, $request->autoclima, $request->specchietti, $request->volantepelle, 
         $request->volantemulti, $request->cbordo, $request->lega, $request->luci, $request->ruota, $request->abs, $request->antifurto, $request->airbagc,
         $request->airbagp, $request->airbagl, $request->immobilizzatore, $request->chiusurac, $request->trazione, $request->fendinebbia, $request->frenata,
@@ -104,5 +110,5 @@ class AnnunciController extends Controller
         return view('annunci.show', compact('annuncio', 'dettagli'));
     }
 
-    
+
 }
