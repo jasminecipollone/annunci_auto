@@ -12,6 +12,6 @@ class Dettagli extends Model
 
     public function annunci()
     {
-        return $this->hasOne(Annuncio::class);
+        return $this->hasMany(Annuncio::class);
     }
 }

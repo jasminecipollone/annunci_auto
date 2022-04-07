@@ -33,6 +33,8 @@ Route::get('/dashboard', function () {
 //CONTROLLER DEGLI ANNUNCI
 Route::get('/annunci', [AnnunciController::class, 'index'])->name('annunci.index');
 Route::get('/annunci/create', [AnnunciController::class, 'create'])->name('annunci.create');
+Route::post('/annunci/store', [AnnunciController::class, 'store'])->name('annunci.store');
+Route::get('/annunci/{id}', [AnnunciController::class, 'show'])->name('annunci.show');
 
 //API SELECT MODELLI AUTO E REGIONE PROVINCIA COMUNE
 Route::get('/annuncimodelli/{id}', function ($id) {
@@ -55,8 +57,9 @@ Route::get('/comune/{provincia}', function ($provincia) {
     return response()->json($comuni);
 });
 
-Route::post('annunci/store', [AnnunciController::class, 'store'])->name('annunci.store');
-Route::get('/annunci/{id}', [AnnunciController::class, 'show'])->name('annunci.show');
+
+//CRUD DEL DB ANNUNCI 
+
 Route::get('/annunci/{id}/edit', [AnnunciController::class, 'edit'])->name('annunci.edit');
 Route::post('annunci/{id}/update', [AnnunciController::class, 'update'])->name('annunci.update');
 Route::get('/annunci/{id}/destroy', [AnnunciController::class, 'destroy'])->name('annunci.destroy');

@@ -8,7 +8,7 @@
 
                 <div class="card-header d-flex justify-content-center">
                     <p><b>
-                            <h4>{{$annuncio->modelli->marche->nome}} {{ $annuncio->modelli->nome }} </h4>
+                            <h4><a href="{{ route('annunci.show', $annuncio->id) }}"> {{$annuncio->modelli->marche->nome}} {{ $annuncio->modelli->nome }}</a></h4>
                     </b></p>
                 </div>
 
@@ -35,17 +35,29 @@
                                         {{ explode('-', $annuncio->immatricolazione)[1] }}/{{ explode('-', $annuncio->immatricolazione)[0] }}
                                     </p>
                                     <hr>
-                                    <p class="card-text">Proprietari: {{ $annuncio->proprietari}}</p>
-                                    <hr>
-                                    <p class="card-text">Consumi: {{ $annuncio->consumi }}</p>
+                                    @php
+                                        if (!empty($annuncio->dettagli->proprietari)) {
+                                            echo '<p class="card-text">Proprietari: ' . $annuncio->dettagli->proprietari . '</p><hr>';
+                                        }
+                                    @endphp
+                                    
+                                    @php
+                                        if (!empty($annuncio->dettagli->consumi)) {
+                                            echo '<p class="card-text">Consumi: ' . $annuncio->dettagli->consumi . '</p>';
+                                        }
+                                    @endphp
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="card-body">
                                     <p class="card-text">Potenza: {{ $annuncio->potenza }}</p>
                                     <hr>
-                                    <p class="card-text">Cambio: {{ $annuncio->cambio }}</p>
-                                    <hr>
+                                    @php
+                                        if (!empty($annuncio->dettagli->cambio)) {
+                                            echo '<p class="card-text">Cambio: ' . $annuncio->dettagli->cambio . '</p><hr>';
+                                        }
+                                    @endphp
+                                    
                                     <p class="card-text">Cilindrata: {{ $annuncio->cilindrata }}</p>
                                 </div>
                             </div>
@@ -55,8 +67,9 @@
 
 
                 <div class="card-footer">
-                    Inserito da {{ $annuncio->user_id }} il
-                    {{ \Carbon\Carbon::parse($annuncio->created_at)->format('d-m-Y') }}
+                    Inserito da {{ $annuncio->user->name }} il
+                    {{ \Carbon\Carbon::parse($annuncio->created_at)->format('d-m-Y') }} , 
+                    si trova a {{$annuncio->comuni->comune}}, {{$annuncio->comuni->provincia}}, {{$annuncio->comuni->regione}}
                 </div>
             </div>
         @endforeach

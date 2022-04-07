@@ -20,7 +20,7 @@ class AnnunciController extends Controller
         $annunci = Annuncio::all();
         $modelli = Modello::all();
         
-        return view('annunci.index', ['annunci' => $annunci, 'modelli' => $modelli]);
+        return view('annunci.index', ['annunci' => $annunci, 'modelli' => $modelli ]);
     }
 
     public function create()
@@ -37,6 +37,25 @@ class AnnunciController extends Controller
     public function store(Request $request)
     {
         //dd($request);
+        $validated = $request->validate([
+            'stato' => 'required',
+            'prezzo' => 'required',
+            'chilometraggio' => 'required',
+            'immatricolazione' => 'required',
+            'potenza' => 'required',
+            'cilindrata' => 'required',
+            'colore' => 'required',
+            'alimentazione' => 'required',
+            'carrozzeria' => 'required',
+            'descrizione' => 'required',
+            'indirizzo' => 'required',
+            'modello' => 'required',
+            'comune' => 'required',
+            'cambio' => 'required',
+            'posti' => 'required',
+            'porte' => 'required',
+        ]);
+
         $annuncio = new Annuncio();
         $annuncio->stato = $request->stato;
         $annuncio->prezzo = $request->prezzo;
@@ -52,7 +71,7 @@ class AnnunciController extends Controller
 
         $annuncio->user_id = 1;
         $annuncio->modello_id = $request->modello;
-        $annuncio->comune_id = 1;
+        $annuncio->comune_id = $request->comune;
         $annuncio->titolo = $request->modello;
         $annuncio->save();
 
@@ -78,4 +97,12 @@ class AnnunciController extends Controller
 
         return redirect()->route('index')->with('msg', 'Veicolo correttamente inserito');
     }
+
+    public function show($id){
+        $annuncio = Annuncio::findOrFail($id);
+        $dettagli = Dettagli::find($id);
+        return view('annunci.show', compact('annuncio', 'dettagli'));
+    }
+
+    
 }

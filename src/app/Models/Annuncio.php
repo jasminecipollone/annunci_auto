@@ -10,14 +10,9 @@ class Annuncio extends Model
     use HasFactory;
     protected $table = 'annunci';
 
-    public function annunci()
-    {
-        return $this->belongsTo(User::class);
-    }
-
     public function comuni()
     {
-        return $this->belongsTo(Comune::class);
+        return $this->belongsTo(Comune::class, 'comune_id', 'id');
     }
 
     public function modelli()
@@ -27,7 +22,11 @@ class Annuncio extends Model
 
     public function dettagli()
     {
-        return $this->belongsTo(Dettagli::class, 'dettagli.id', 'annunci.id');
+        return $this->belongsTo(Dettagli::class, 'id', 'id');
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

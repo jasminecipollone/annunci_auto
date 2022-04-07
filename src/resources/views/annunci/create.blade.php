@@ -3,6 +3,16 @@
 <div class="container" style="padding-top:60px">
     <h1 class="text-center my-3">Vendi il tuo Veicolo</h1>
 
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
 
         <form action="{{ route('annunci.store') }}" method="post" enctype="multipart/form-data">
             <div id="form1" class="">
@@ -23,6 +33,7 @@
             <div class="col">
               <label class="form-check-label" for="regione"><h4>Regione</h4></label>
               <select class="form-select" aria-label="Default select example" name="regione" id="regione" onchange="mostraprovince()">
+                <option>Regione</option>
                   @for ($i = 0; $i < count($regioni); $i++)
                     <option value="{{$regioni[$i]->regione}}" name="regione">{{$regioni[$i]->regione}}</option>
                   @endfor
@@ -386,6 +397,7 @@
         }) 
         .then(modelli => { 
             document.getElementById('modello').innerHTML = '';
+            document.getElementById('modello').innerHTML = '<option>Modello</option>';
             for ( let i = 0; i < modelli.length; i++) { 
                 document.getElementById('modello').innerHTML += `
                     <option value="${modelli[i].id }" name="modello">${modelli[i].nome}</option>
@@ -417,6 +429,7 @@
         }) 
         .then(province => { 
             document.getElementById('provincia').innerHTML = '';
+            document.getElementById('provincia').innerHTML = '<option>Provincia</option>';
             for (let i = 0; i < province.length; i++){
               document.getElementById('provincia').innerHTML += `
                 <option value="${province[i].provincia}" name="provincia">${province[i].provincia}</option>`;
@@ -432,9 +445,10 @@
         }) 
         .then(comuni => { 
             document.getElementById('comune').innerHTML = '';
+            document.getElementById('comune').innerHTML = '<option>Comune</option>';
             for (let i = 0; i < comuni.length; i++){
               document.getElementById('comune').innerHTML += `
-                <option value="${comuni[i].comune}" name="comune">${comuni[i].comune}</option>`;
+                <option value="${comuni[i].id}" name="comune">${comuni[i].comune}</option>`;
             }         
         });
       };
