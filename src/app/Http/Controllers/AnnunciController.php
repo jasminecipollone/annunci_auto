@@ -19,6 +19,7 @@ class AnnunciController extends Controller
     public function index()
     {
         $annunci = Annuncio::orderByDesc('created_at')
+                            ->where('venduta', false)
                             ->paginate(5);
         $modelli = Modello::all();
         
@@ -110,5 +111,14 @@ class AnnunciController extends Controller
         return view('annunci.show', compact('annuncio', 'dettagli'));
     }
 
+    public function destroy($id)
+    {
+        $annuncio = Annuncio::find($id);
+        $annuncio->venduta = true;
+        $annuncio->save();
+
+        return back()->with('msg', 'Articolo segnalato come venduto!');
+    }
+   
 
 }

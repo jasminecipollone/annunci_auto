@@ -57,9 +57,7 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('annunci.create') }}">Inserisci Annuncio</a>
-                    </li>
+                
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('annunci.index') }}">Elenco Annunci</a>
                     </li>
@@ -67,7 +65,7 @@
 
                   @auth
                       <li class="nav-item">
-                          <a class="nav-link" href="#">I miei Annunci</a>
+                          <a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a>
                       </li>
 
                   @endauth
