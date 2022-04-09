@@ -36,7 +36,7 @@ Route::get('/returnsell/{id}', [NavController::class, 'returnsell'])->name('user
 
 //CONTROLLER DEGLI UTENTI
 Route::get('/user/{id}/edit', [UserController::class, 'edit'])->name('users.edit')->middleware('auth');
-Route::post('user/{id}/update', [UserController::class, 'update'])->name('users.update')->middleware('auth');
+Route::post('/user/{id}/update', [UserController::class, 'update'])->name('users.update')->middleware('auth');
 Route::get('/user/{id}/destroy', [UserController::class, 'destroy'])->name('users.destroy')->middleware('auth');
 
 
@@ -50,15 +50,20 @@ Route::get('/annunci/{id}/edit', [AnnunciController::class, 'edit'])->name('annu
 Route::post('annunci/{id}/update', [AnnunciController::class, 'update'])->name('annunci.update')->middleware('auth');
 
 
+
 //ADMIN ROUTES
 Route::get('/admin',function(){
     return view('admin.index');
 })->middleware('admin');
+
 Route::get('/notauth',function(){
     return view('notauth');
 })->name('notauth');
+
 Route::get('/admin/users',[UserAdminController::class, 'users'])->name('admin.users.index')->middleware('admin');
 Route::get('/admin/annunci',[UserAdminController::class, 'annunci'])->name('admin.annunci.index')->middleware('admin');
+Route::get('annunci/{id}/remove', [NavController::class, 'removeforever'])->name('annunci.remove')->middleware('admin');
+Route::get('user/{id}/makeadmin', [NavController::class, 'makeadmin'])->name('user.makeadmin')->middleware('admin');
 
 
 //API SELECT MODELLI AUTO E REGIONE PROVINCIA COMUNE

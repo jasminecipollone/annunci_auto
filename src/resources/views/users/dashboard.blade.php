@@ -4,6 +4,9 @@
 <div class="container" style="padding-top:80px">
     @auth
     <h1 class="text-left">Benvenuto, {{ Auth::user()->name }} </h1>
+      @if (Auth::user()->role == true)
+        <a href="/admin" class="btn btn-info">Pannello Admin</a>
+      @endif
     @endauth
     <div class="container my-3">
         <button type="button" class="btn btn-outline-primary" onclick="window.location='{{ route('user.mycars') }}'">Le mie auto in vendita</button>
@@ -36,6 +39,22 @@
           2 days ago
         </div>
       </div>
+
+</div>
+
+<div class="container my-5">
+  <div class="card text-center">
+      <div class="card-header">
+        Featured
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+      </div>
+      <div class="card-footer text-muted">
+        2 days ago
+      </div>
+    </div>
 
 </div>
 

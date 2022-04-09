@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Annuncio;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class NavController extends Controller
 {
@@ -41,7 +42,26 @@ class NavController extends Controller
         $annuncio->venduta = false;
         $annuncio->save();
         
-        return redirect()->route('dashboard')->with('msg', 'Veicolo rimesso in vendita!');
+        return back()->with('msg', 'Veicolo rimesso in vendita!');
 
+    }
+
+    public function removeforever($id){
+        $annuncio = Annuncio::find($id);
+        if(Auth::user()->role == 'true'){
+        if (Storage::exists('public/immagini/' . $annuncio->immagine)) {
+            Storage::delete('public/immagini/' . $annuncio->immagine);
+        }
+        $annuncio->delete();
+        }
+        return back()->with('msg', 'Veicolo eliminato definitivamente!');
+    }
+
+    public function makeadmin($id){
+        $user = User::find($id);
+        $user->role = true;
+        $user->save();
+        
+        return back()->with('msg', 'Utente trasformato in Admin!');
     }
 }
