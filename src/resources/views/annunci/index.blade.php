@@ -1,4 +1,5 @@
 @extends('layouts.template')
+@section('title', 'Golden Garage - Le nostre auto')
 @section('content')
     <div class="container-fluid" style="padding-top:60px">
         <h1 class="text-center">Le nostre vetture</h1>

@@ -1,4 +1,5 @@
 @extends('layouts.template')
+@section('title', 'Golden Garage - Showroom')
 @section('content')
     <div class="container" style="margin-top:80px">
         <h1 class="text-center"> {{ $annuncio->modelli->marche->nome }} {{ $annuncio->modelli->nome }} </h1>

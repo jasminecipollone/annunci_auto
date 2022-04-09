@@ -1,5 +1,3 @@
-@extends('layouts.template')
-
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">

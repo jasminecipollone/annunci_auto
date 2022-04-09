@@ -1,4 +1,5 @@
 @extends('layouts.template')
+@section('title', 'Golden Garage - Le mie auto')
 @section('content')
 <div class="container" style="padding-top:80px">
     @auth
@@ -8,7 +9,7 @@
         <button type="button" class="btn btn-outline-primary" onclick="window.location='{{ route('user.mycars') }}'">Le mie auto in vendita</button>
         <button type="button" class="btn btn-outline-dark" onclick="window.location='{{ route('user.carssold') }}'">Le mie auto vendute</button>
         <button type="button" class="btn btn-outline-secondary">Le mie recensioni</button>
-        <button type="button" class="btn btn-outline-success">Il mio profilo</button>
+        <button type="button" class="btn btn-outline-success" onclick="window.location='{{ route('users.edit', Auth::user()->id) }}'">Il mio profilo</button>
         <button type="button" class="btn btn-outline-danger" onclick="window.location='{{ route('user.mystats') }}'">Le mie statistiche</button>
         <button type="button" class="btn btn-outline-warning" onclick="window.location='{{ route('annunci.index') }}'">Visiona gli annunci</button>
         <button type="button" class="btn btn-outline-info" onclick="window.location='{{ route('annunci.create') }}'">Inserisci annuncio</button>
@@ -96,7 +97,7 @@
             <div class="row">
                 <div class="col">
                     <a href="{{ route('annunci.destroy',$annuncio->id)}}" class="btn btn-success">Segnala come venduta</a>
-                    <a href="#" class="btn btn-warning">Modifica i dati dell'annuncio</a>
+                    <a href="{{ route('annunci.edit',$annuncio->id)}}" class="btn btn-warning">Modifica i dati dell'annuncio</a>
                 </div>
             </div>
             <hr>

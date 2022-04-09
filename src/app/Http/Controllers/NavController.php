@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Annuncio;
+use Illuminate\Support\Facades\DB;
 
 class NavController extends Controller
 {
@@ -22,6 +23,25 @@ class NavController extends Controller
         $vendute = User::find(Auth::id())->annunci->where('venduta', true)->count();
         $vendita = User::find(Auth::id())->annunci->where('venduta', false)->count();
 
-        return view('users.mystats', ['vendute' => $vendute, 'vendita' => $vendita]);
+        $prezzo_nonvendute = DB::table('annunci') 
+                ->where('venduta', '=', false)
+                ->where('user_id', '=', Auth::id())
+                ->sum('prezzo');
+
+        $prezzo_vendute = DB::table('annunci') 
+                ->where('venduta', '=', true)
+                ->where('user_id', '=', Auth::id())
+                ->sum('prezzo');         
+
+        return view('users.mystats', ['vendute' => $vendute, 'vendita' => $vendita, 'prezzov' => $prezzo_vendute, 'prezzon' => $prezzo_nonvendute]);
+    }
+
+    public function returnsell($id){
+        $annuncio = Annuncio::find($id);
+        $annuncio->venduta = false;
+        $annuncio->save();
+        
+        return redirect()->route('dashboard')->with('msg', 'Veicolo rimesso in vendita!');
+
     }
 }

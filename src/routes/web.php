@@ -3,6 +3,7 @@
 use App\Http\Controllers\AnnunciController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\NavController;
+use App\Http\Controllers\UserAdminController;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
@@ -31,16 +32,33 @@ Route::get('/dashboard', function () {
 Route::get('/mycars', [NavController::class, 'mycars'])->name('user.mycars')->middleware('auth');
 Route::get('/carssold', [NavController::class, 'carssold'])->name('user.carssold')->middleware('auth');
 Route::get('/mystats', [NavController::class, 'mystats'])->name('user.mystats')->middleware('auth');
+Route::get('/returnsell/{id}', [NavController::class, 'returnsell'])->name('user.return')->middleware('auth');
 
 //CONTROLLER DEGLI UTENTI
+Route::get('/user/{id}/edit', [UserController::class, 'edit'])->name('users.edit')->middleware('auth');
+Route::post('user/{id}/update', [UserController::class, 'update'])->name('users.update')->middleware('auth');
+Route::get('/user/{id}/destroy', [UserController::class, 'destroy'])->name('users.destroy')->middleware('auth');
 
 
 //CONTROLLER DEGLI ANNUNCI
 Route::get('/annunci', [AnnunciController::class, 'index'])->name('annunci.index');
-Route::get('/annunci/create', [AnnunciController::class, 'create'])->name('annunci.create');
-Route::post('/annunci/store', [AnnunciController::class, 'store'])->name('annunci.store');
+Route::get('/annunci/create', [AnnunciController::class, 'create'])->name('annunci.create')->middleware('auth');
+Route::post('/annunci/store', [AnnunciController::class, 'store'])->name('annunci.store')->middleware('auth');
 Route::get('/annunci/{id}', [AnnunciController::class, 'show'])->name('annunci.show');
-Route::get('/annunci/{id}/destroy', [AnnunciController::class, 'destroy'])->name('annunci.destroy');
+Route::get('/annunci/{id}/destroy', [AnnunciController::class, 'destroy'])->name('annunci.destroy')->middleware('auth');
+Route::get('/annunci/{id}/edit', [AnnunciController::class, 'edit'])->name('annunci.edit')->middleware('auth');
+Route::post('annunci/{id}/update', [AnnunciController::class, 'update'])->name('annunci.update')->middleware('auth');
+
+
+//ADMIN ROUTES
+Route::get('/admin',function(){
+    return view('admin.index');
+})->middleware('admin');
+Route::get('/notauth',function(){
+    return view('notauth');
+})->name('notauth');
+Route::get('/admin/users',[UserAdminController::class, 'users'])->name('admin.users.index')->middleware('admin');
+Route::get('/admin/annunci',[UserAdminController::class, 'annunci'])->name('admin.annunci.index')->middleware('admin');
 
 
 //API SELECT MODELLI AUTO E REGIONE PROVINCIA COMUNE
@@ -65,10 +83,7 @@ Route::get('/comune/{provincia}', function ($provincia) {
 });
 
 
-//CRUD DEL DB ANNUNCI 
 
-Route::get('/annunci/{id}/edit', [AnnunciController::class, 'edit'])->name('annunci.edit');
-Route::post('annunci/{id}/update', [AnnunciController::class, 'update'])->name('annunci.update');
 
 
 require __DIR__.'/auth.php';

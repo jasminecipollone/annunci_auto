@@ -1,4 +1,5 @@
 @extends('layouts.template')
+@section('title', 'Golden Garage')
 @section('content')
     <style>
         /* Centered text */
@@ -18,25 +19,17 @@
             transform: translate(-50%, -50%);
         }
 
-        /* Bottom left text */
-        .bottom-left {
-            position: absolute;
-            bottom: 8px;
-            left: 16px;
-        }
-
         img {
 
         }
 
     </style>
-    <div class="main-page">
+    <div class="main-page my-5">
         <div class="centered">
-            <h1 style="font-family: 'Gwendolyn', serif; font-size: 12rem; color: #8B0000;">Golden Garage</h1>
-            <h4 class="text-center" style="font-family: 'Gwendolyn', serif; font-size: 5rem; color: #8B0000;">
+            <h1 style="font-family: 'Satisfy', serif; font-size: 10rem; color: white;">Golden Garage</h1>
+            <h4 class="text-center" style="font-family: 'Satisfy', serif; font-size: 5rem; color: white;">
               Buy your dream today
             </h4>
         </div>
-        <div class="bottom-left"><a href="/annunci" class="btn btn-danger">Look at our Cars</a></div>
     </div>
 @endsection

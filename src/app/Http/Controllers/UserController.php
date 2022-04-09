@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -38,10 +39,10 @@ class UserController extends Controller
         $user = DB::table('users')->find($id);
         dd($user);
     }
-    public function delete($id)
+    public function destroy($id)
     {
         $deleted = DB::table('users')->where('id', '=', $id)->delete();
-        return redirect('/user');
+        return redirect('/');
     }
     public function edit($id)
     {
@@ -55,8 +56,8 @@ class UserController extends Controller
             ->update([
                 'name' => $request->name,
                 'email' => $request->email,
-                'password' => $request->password
+                'password' => Hash::make($request->password)
             ]);
-        return redirect()->route('users.index');
+        return redirect()->route('dashboard')->with('msg', 'Dati utente modificati con successo!');
     }
 }
