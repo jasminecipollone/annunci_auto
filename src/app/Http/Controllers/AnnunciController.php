@@ -92,7 +92,7 @@ class AnnunciController extends Controller
         $dettagli->porte = $request->porte;
         $dettagli->consumi = $request->consumi;
         $dettagli->emissioni = Ucwords($request->emissioni);
-        $dettagli->equipaggiamento = implode(',', (array) $request['equipaggiamento']);
+        $dettagli->equipaggiamento = json_encode($request['equipaggiamento']);
         /*$dettagli->equipaggiamento = [$request->alzacristalli, $request->clima, $request->autoclima, $request->specchietti, $request->volantepelle, 
         $request->volantemulti, $request->cbordo, $request->lega, $request->luci, $request->ruota, $request->abs, $request->antifurto, $request->airbagc,
         $request->airbagp, $request->airbagl, $request->immobilizzatore, $request->chiusurac, $request->trazione, $request->fendinebbia, $request->frenata,

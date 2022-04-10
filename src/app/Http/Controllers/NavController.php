@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Storage;
 class NavController extends Controller
 {
     public function mycars(){
-        $annunci = User::find(Auth::id())->annunci->where('venduta', false);
+        $annunci = User::find(Auth::id())->annunci->sortByDesc('created_at')->where('venduta', false);
         return view('users.mycars', ['annunci' => $annunci]);
     }
 

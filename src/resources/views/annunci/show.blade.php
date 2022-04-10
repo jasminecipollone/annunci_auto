@@ -106,54 +106,89 @@
 
         <div class="row">
             <h3>Equipaggiamento</h3>
-            <div class="container">
+            
+            <div class="container my-2">
                 <div class="row">
-                    <div class="col">
-                        <h3>Comodità</h3>
-                        <ul>
+                    
                         @php
+
                         if (!empty($annuncio->dettagli->equipaggiamento)) {
-                            $str = $annuncio->dettagli->equipaggiamento;
- 
-                                if(strpos($str, 'alzacristalli') >= 0){
-                                    echo '<li>Alzacristalli Elettrici</li>';
-                                }
-
-                                if(strpos($str, 'clima') >= 0){
-                                    echo '<li>Clima</li>';
-                                }
-
-                                if(strpos($str, 'autoclima') >= 0){
-                                    echo '<li>Controllo automatico clima</li>';
-                                }
+                            $eq = json_decode($annuncio->dettagli->equipaggiamento);
                             
-                                if(strpos($str, 'specchietti') >= 0){
-                                    echo '<li>Specchietti laterali elettrici</li>';
+                            $eq_comodita = [
+                                'alzacristalli' => 'Alzacristalli Elettrici',
+                                'clima' => 'Clima',
+                                'autoclima' => 'Controllo automatico clima',
+                                'specchietti' => 'Specchietti laterali elettrici',
+                                'volantepelle' => 'Volante in pelle',
+                                'volantemulti' => 'Volante multifunzione',
+                                'cbordo' => 'Computer di bordo',
+                                'lega' => 'Cerchi in lega',
+                                'luci' => 'Luci d\'ambiente',
+                            ];
+
+                            $eq_sicurezza = [
+                                'ruota' => 'Ruota di scorta',
+                                'abs' => 'ABS',
+                                'antifurto' => 'Antifurto',
+                                'airbagc' => 'Airbag conducente',
+                                'airbagp' => 'Airbag passeggero',
+                                'airbagl' => 'Airbag laterali',
+                                'immobilizzatore' => 'Immobilizzatore elettronico',
+                            ];
+
+                            $eq_tecnologia = [
+                                'chiusurac' => 'Chiusura centralizzata',
+                                'trazione' => 'Controllo automatico trazione',
+                                'fendinebbia' => 'Fendinebbia',
+                                'frenata' => 'Frenata d\'emergenza assistita',
+                                'servosterzo' => 'Servosterzo',
+                                'prezzione' => 'Sistema di controllo pressione pneumatici',
+                                'eps' => 'ESP',
+                                'corsia' => 'Mantenimento di corsia',
+                                'autonoma' => 'Guida autonoma',
+
+                            ];
+
+
+                            $comodita = '';
+                            $sicurezza = '';
+                            $tecnologia = '';
+                        
+                            foreach ($eq as $value) {
+                                if (!empty($eq_comodita[$value] )){
+                                    $comodita .= '<li>'.$eq_comodita[$value].'</li>';
                                 }
-                                if(strpos($str, 'volantepelle') >= 0){
-                                    echo '<li>Volante in pelle</li>';
+                                else if (!empty($eq_sicurezza[$value])){
+                                    $sicurezza .= '<li>'.$eq_sicurezza[$value].'</li>';
                                 }
-                                if(strpos($str, 'volantemulti') >= 0){
-                                    echo '<li>Volante multifunzione</li>';
+                                else if (!empty($eq_tecnologia[$value])){
+                                    $tecnologia .= '<li>'.$eq_tecnologia[$value].'</li>';
                                 }
-                                if(strpos($str, 'cbordo') >= 0){
-                                    echo '<li>Computer di bordo</li>';
-                                }
-                                if(strpos($str, 'lega') >= 0){
-                                    echo '<li>Cerchi in lega</li>';
-                                }
-                                if(strpos($str, 'luci') >= 0){
-                                    echo '<li>Luci d\'ambiente</li>';
-                                }
+                            }
+
+                            echo '<div class="col"><h4>Comodità</h4><ul>';
+                            echo $comodita;
+                            echo '</ul></div>'; 
+
+                            echo '<div class="col"><h4>Sicurezza</h4><ul>';
+                            echo $sicurezza;
+                            echo '</ul></div>';
+                            
+                            echo '<div class="col"><h4>Tecnologia</h4><ul>';
+                            echo $tecnologia;
+                            echo '</ul></div>';
+                               
                         }
                         @endphp
-                        </ul>
-                    </div>
+                        
 
                 </div>
             
             </div>
         </div>
+
+        <hr>
 
 
 
