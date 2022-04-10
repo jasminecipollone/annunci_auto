@@ -14,14 +14,19 @@ class RecensioniController extends Controller
         $recensione = new Recensione;
         $recensione->valutazione = $request->valutazione;
         $recensione->user_id = $request->user_id;
-        $recensione->user_id_who = Auth::user()->name;
+        $recensione->user_id_who = Auth::id();
+        $recensione->user_name_who = Auth::user()->name;
         $recensione->commento = $request->commento;
         $recensione->save();
 
         return back()->with('msg', 'Recensione aggiunta con successo!');
     }
 
-    public function index(){
-        
+
+    public function destroy($id)
+    {
+        $recensione = Recensione::find($id);
+        $recensione->delete();
+        return back()->with('msg', 'Recensione eliminata con successo!');
     }
 }

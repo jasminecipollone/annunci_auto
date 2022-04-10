@@ -54,6 +54,7 @@ Route::post('annunci/{id}/update', [AnnunciController::class, 'update'])->name('
 
 //CONTROLLER RECENSIONI
 Route::post('/recensioni/store', [RecensioniController::class, 'store'])->name('recensioni.store')->middleware('auth');
+Route::delete('/comments/{id}/destroy', [RecensioniController::class, 'destroy'])->name('recensioni.destroy');
 
 //ADMIN ROUTES
 Route::get('/admin',function(){

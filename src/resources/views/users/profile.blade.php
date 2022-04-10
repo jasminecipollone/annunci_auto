@@ -25,11 +25,12 @@
                     <th scope="col">Inserita il</th>
                     <th scope="col">Recensione</th>
                     <th scope="col">Valutazione</th>
+                    <th> </th>
                 </tr>
             </thead>
             @foreach ($recensioni as $recensione)
                 <tr>
-                    <td>{{ $recensione->user_id_who}}</td>
+                    <td>{{ $recensione->user_name_who}}</td>
                     <td>{{ $recensione->created_at }}</td>
                     <td>{{ $recensione->commento }}</td>
                     <td>
@@ -40,6 +41,15 @@
                             }
                             echo $stars;
                         @endphp
+                    </td>
+                    <td>
+                        @if ($recensione->user_id_who == Auth::id())
+                        <form method="post" action={{ route('recensioni.destroy', $recensione->id) }}>
+                            @method('delete')
+                            @csrf
+                            <button type="submit" class="btn btn-danger" value="Elimina">Elimina</button>
+                        </form>
+                        @endif
                     </td>
                 </tr>
             @endforeach
@@ -75,7 +85,6 @@
                 <label for="exampleInputEmail1" class="form-label">Recensione</label>
                 <input type="hidden" name="user_id" value="{{ $user->id }}" />
                 <input type="hidden" name="valutazione" id="valutazione" value="" />
-                <input type="hidden" name="user_id_who" value="{{ Auth::id() }}" />
                 <input type="text" class="form-control" id="exampleInputEmail1" name="commento" aria-describedby="emailHelp">
             </div>
         </div>
