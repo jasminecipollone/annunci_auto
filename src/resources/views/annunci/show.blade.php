@@ -6,7 +6,7 @@
 
         <div class="row">
             <div class="col">
-                <h5>Venduto da {{ $annuncio->user->name }} </h5>
+                <h5>Venduto da <a href="{{ route('users.profile', $annuncio->user_id) }}">{{ $annuncio->user->name }} </a></h5>
             </div>
             <div class="col text-end">
                 <h5>{{ $annuncio->comuni->comune }}, {{ $annuncio->comuni->provincia }},
@@ -189,7 +189,33 @@
         </div>
 
         <hr>
+        @auth
+        
+        @if(Session::has('msg'))
+        <div class="alert alert-success" role="alert">
+            {{ Session::get('msg') }}
+        </div>
+        @endif
 
+        <div class="row">
+            <h2>Interessato all'acquisto? Chiedi info al proprietario</h2>
+            <form method="post" action="{{ route('annunci.info', $annuncio->id)}}" class="mb-5">
+            @csrf
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Your Email address</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" value="{{ Auth::user()->email }}" name="interessato">
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Info</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="info"></textarea>
+              </div>
+              <input type="hidden" name="annuncio_id" value="{{ $annuncio->id }}" />
+              <input type="hidden" name="proprietario" value="{{ $annuncio->user->email }}" />
+
+              <input type="submit" class="btn btn-warning" value="Invia">
+            </form>
+        </div>
+        @endauth
 
 
 

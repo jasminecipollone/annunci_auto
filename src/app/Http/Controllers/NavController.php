@@ -1,12 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Mail\InfoCar;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Recensione;
 use App\Models\Annuncio;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+
 
 class NavController extends Controller
 {
@@ -63,5 +68,30 @@ class NavController extends Controller
         $user->save();
         
         return back()->with('msg', 'Utente trasformato in Admin!');
+    }
+
+    public function info($id, Request $request){
+        $annuncio = Annuncio::find($id);
+        $proprietario = $request->proprietario;
+        $interessato = $request->interessato;
+        $info = $request->info;
+
+        Mail::to($proprietario)->send(new InfoCar($annuncio, $interessato, $info));
+
+        return back()->with('msg', 'Email inviata con successo!');
+    }
+
+    public function profile($id){
+        $user = User::find($id);
+        $vendute = $user->annunci->where('venduta', true)->count();
+        $nonvendute = $user->annunci->where('venduta', false)->count();
+
+        $media = DB::table('recensioni') 
+                ->where('user_id', '=', $id)
+                ->avg('valutazione');
+        
+        $recensioni = Recensione::where('user_id', $id)->orderByDesc('created_at')->paginate(5);
+
+        return view('users.profile', ['user' => $user, 'vendute' => $vendute, 'nonvendute' => $nonvendute, 'recensioni' => $recensioni, 'media' => $media]);
     }
 }

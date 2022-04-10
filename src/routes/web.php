@@ -4,6 +4,7 @@ use App\Http\Controllers\AnnunciController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\NavController;
 use App\Http\Controllers\UserAdminController;
+use App\Http\Controllers\RecensioniController;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
@@ -38,6 +39,8 @@ Route::get('/returnsell/{id}', [NavController::class, 'returnsell'])->name('user
 Route::get('/user/{id}/edit', [UserController::class, 'edit'])->name('users.edit')->middleware('auth');
 Route::post('/user/{id}/update', [UserController::class, 'update'])->name('users.update')->middleware('auth');
 Route::get('/user/{id}/destroy', [UserController::class, 'destroy'])->name('users.destroy')->middleware('auth');
+Route::post('/annunci/{id}/info', [NavController::class, 'info'])->name('annunci.info')->middleware('auth');
+Route::get('/user/{id}/profile', [NavController::class, 'profile'])->name('users.profile');
 
 
 //CONTROLLER DEGLI ANNUNCI
@@ -49,7 +52,8 @@ Route::get('/annunci/{id}/destroy', [AnnunciController::class, 'destroy'])->name
 Route::get('/annunci/{id}/edit', [AnnunciController::class, 'edit'])->name('annunci.edit')->middleware('auth');
 Route::post('annunci/{id}/update', [AnnunciController::class, 'update'])->name('annunci.update')->middleware('auth');
 
-
+//CONTROLLER RECENSIONI
+Route::post('/recensioni/store', [RecensioniController::class, 'store'])->name('recensioni.store')->middleware('auth');
 
 //ADMIN ROUTES
 Route::get('/admin',function(){

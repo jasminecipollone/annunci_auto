@@ -10,7 +10,7 @@ class Recensione extends Model
     use HasFactory;
     protected $table = 'recensioni';
 
-    public function annunci()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
