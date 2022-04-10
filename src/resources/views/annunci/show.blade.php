@@ -106,7 +106,53 @@
 
         <div class="row">
             <h3>Equipaggiamento</h3>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h3>Comodità</h3>
+                        <ul>
+                        @php
+                        if (!empty($annuncio->dettagli->equipaggiamento)) {
+                            $str = $annuncio->dettagli->equipaggiamento;
+ 
+                                if(strpos($str, 'alzacristalli') >= 0){
+                                    echo '<li>Alzacristalli Elettrici</li>';
+                                }
 
+                                if(strpos($str, 'clima') >= 0){
+                                    echo '<li>Clima</li>';
+                                }
+
+                                if(strpos($str, 'autoclima') >= 0){
+                                    echo '<li>Controllo automatico clima</li>';
+                                }
+                            
+                                if(strpos($str, 'specchietti') >= 0){
+                                    echo '<li>Specchietti laterali elettrici</li>';
+                                }
+                                if(strpos($str, 'volantepelle') >= 0){
+                                    echo '<li>Volante in pelle</li>';
+                                }
+                                if(strpos($str, 'volantemulti') >= 0){
+                                    echo '<li>Volante multifunzione</li>';
+                                }
+                                if(strpos($str, 'cbordo') >= 0){
+                                    echo '<li>Computer di bordo</li>';
+                                }
+                                if(strpos($str, 'lega') >= 0){
+                                    echo '<li>Cerchi in lega</li>';
+                                }
+                                if(strpos($str, 'luci') >= 0){
+                                    echo '<li>Luci d\'ambiente</li>';
+                                }
+                        }
+                        @endphp
+                        </ul>
+                    </div>
+
+                </div>
+            
+            </div>
         </div>
 
 

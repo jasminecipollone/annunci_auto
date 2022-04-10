@@ -204,63 +204,63 @@
                 <h4>Comodità</h4>
               
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="alzacristalli" id="alzacristalli">
+                  <input class="form-check-input" type="checkbox" value="alzacristalli" id="alzacristalli" name="equipaggiamento[]">
                   <label class="form-check-label" for="alzacristalli">
                       Alzacristalli elettrici
                   </label>
                 </div>
 
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="clima" id="clima" Default>
+                  <input class="form-check-input" type="checkbox" value="clima" id="clima" name="equipaggiamento[]">
                   <label class="form-check-label" for="clima">
                       Climatizzatore
                   </label>
                 </div>
 
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="autoclima" id="autoclima" Default>
+                  <input class="form-check-input" type="checkbox" value="autoclima" id="autoclima" name="equipaggiamento[]">
                   <label class="form-check-label" for="autoclima">
                       Controllo automatico clima
                   </label>
                 </div>
 
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="specchietti" id="specchietti" Default>
+                  <input class="form-check-input" type="checkbox" value="specchietti" id="specchietti" name="equipaggiamento[]">
                   <label class="form-check-label" for="specchietti">
                       Specchietti laterali elettrici
                   </label>
                 </div>
 
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="volantepelle" id="volantepelle" Default>
+                  <input class="form-check-input" type="checkbox" value="volantepelle" id="volantepelle" name="equipaggiamento[]">
                   <label class="form-check-label" for="volantepelle">
                       Volante in pelle
                   </label>
                 </div>
 
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="volantemulti" id="volantemulti" Default>
+                  <input class="form-check-input" type="checkbox" value="volantemulti" id="volantemulti" name="equipaggiamento[]">
                   <label class="form-check-label" for="volantemulti">
                       Volante multifunzione
                   </label>
                 </div>
 
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="cbordo" id="cbordo" Default>
+                  <input class="form-check-input" type="checkbox" value="cbordo" id="cbordo" name="equipaggiamento[]">
                   <label class="form-check-label" for="cbordo">
                       Computer di bordo
                   </label>
                 </div>
 
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="lega" id="lega" Default>
+                  <input class="form-check-input" type="checkbox" value="lega" id="lega" name="equipaggiamento[]">
                   <label class="form-check-label" for="lega">
                       Cerchi in lega
                   </label>
                 </div>
 
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="luci" id="luci" Default>
+                  <input class="form-check-input" type="checkbox" value="luci" id="luci" name="equipaggiamento[]">
                   <label class="form-check-label" for="luci">
                       Luce d'ambiente
                   </label>
@@ -271,49 +271,49 @@
                 <h4>Sicurezza</h4>
 
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="ruota" id="ruota" Default>
+                  <input class="form-check-input" type="checkbox" value="ruota" id="ruota" name="equipaggiamento[]">
                   <label class="form-check-label" for="ruota">
                       Ruota di scorta
                   </label>
                 </div>
 
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="abs" id="abs" Default>
+                  <input class="form-check-input" type="checkbox" value="abs" id="abs" name="equipaggiamento[]">
                   <label class="form-check-label" for="abs">
                       ABS
                   </label>
                 </div>
 
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="antifurto" id="antifurto" Default>
+                  <input class="form-check-input" type="checkbox" value="antifurto" id="antifurto" name="equipaggiamento[]">
                   <label class="form-check-label" for="antifurto">
                       Antifurto
                   </label>
                 </div>
 
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="airbagc" id="airbagc" Default>
+                  <input class="form-check-input" type="checkbox" value="airbagc" id="airbagc" name="equipaggiamento[]">
                   <label class="form-check-label" for="airbagc">
                       Airbag conducente
                   </label>
                 </div>
 
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="airbagp" id="airbagp" Default>
+                  <input class="form-check-input" type="checkbox" value="airbagp" id="airbagp" name="equipaggiamento[]">
                   <label class="form-check-label" for="airbagp">
                       Airbag passeggero
                   </label>
                 </div>
 
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="airbagl" id="airbagl" Default>
+                  <input class="form-check-input" type="checkbox" value="airbagl" id="airbagl" name="equipaggiamento[]">
                   <label class="form-check-label" for="airbagl">
                       Airbag laterali
                   </label>
                 </div>
 
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="immobilizzatore" id="immobilizzatore" Default>
+                  <input class="form-check-input" type="checkbox" value="immobilizzatore" id="immobilizzatore" name="equipaggiamento[]">
                   <label class="form-check-label" for="immobilizzatore">
                       Immobilizzatore elettronico
                   </label>
@@ -325,63 +325,63 @@
                 <h4>Tecnologia</h4>
 
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="chiusurac" id="chiusurac" Default>
+                  <input class="form-check-input" type="checkbox" value="chiusurac" id="chiusurac" name="equipaggiamento[]">
                   <label class="form-check-label" for="chiusurac">
                       Chiusura centralizzata
                   </label>
                 </div>
 
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="trazione" id="trazione" Default>
+                  <input class="form-check-input" type="checkbox" value="trazione" id="trazione" name="equipaggiamento[]">
                   <label class="form-check-label" for="trazione">
                       Controllo automatico trazione
                   </label>
                 </div>
 
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="fendinebbia" id="fendinebbia" Default>
+                  <input class="form-check-input" type="checkbox" value="fendinebbia" id="fendinebbia" name="equipaggiamento[]">
                   <label class="form-check-label" for="fendinebbia">
                      Fendinebbia
                   </label>
                 </div>
 
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="frenata" id="frenata" Default>
+                  <input class="form-check-input" type="checkbox" value="frenata" id="frenata" name="equipaggiamento[]">
                   <label class="form-check-label" for="frenata">
                       Frenata d'emergenza assistita
                   </label>
                 </div>
 
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="servosterzo" id="servosterzo" Default>
+                  <input class="form-check-input" type="checkbox" value="servosterzo" id="servosterzo" name="equipaggiamento[]">
                   <label class="form-check-label" for="servosterzo">
                       Servosterzo
                   </label>
                 </div>
 
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="pressione" id="pressione" Default>
+                  <input class="form-check-input" type="checkbox" value="pressione" id="pressione" name="equipaggiamento[]">
                   <label class="form-check-label" for="pressione">
                       Sistema di controllo pressione pneumatici
                   </label>
                 </div>
 
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="esp" id="esp" Default>
+                  <input class="form-check-input" type="checkbox" value="esp" id="esp" name="equipaggiamento[]">
                   <label class="form-check-label" for="esp">
                       ESP
                   </label>
                 </div>
 
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="corsia" id="corsia" Default>
+                  <input class="form-check-input" type="checkbox" value="corsia" id="corsia" name="equipaggiamento[]">
                   <label class="form-check-label" for="corsia">
                       Mantenimento di corsia
                   </label>
                 </div>
 
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="autonoma" id="autonoma" Default>
+                  <input class="form-check-input" type="checkbox" value="autonoma" id="autonoma" name="equipaggiamento[]">
                   <label class="form-check-label" for="autonoma">
                       Guida autonoma
                   </label>
