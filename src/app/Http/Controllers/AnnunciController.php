@@ -93,15 +93,12 @@ class AnnunciController extends Controller
         $dettagli->consumi = $request->consumi;
         $dettagli->emissioni = Ucwords($request->emissioni);
         $dettagli->equipaggiamento = json_encode($request['equipaggiamento']);
-        /*$dettagli->equipaggiamento = [$request->alzacristalli, $request->clima, $request->autoclima, $request->specchietti, $request->volantepelle, 
-        $request->volantemulti, $request->cbordo, $request->lega, $request->luci, $request->ruota, $request->abs, $request->antifurto, $request->airbagc,
-        $request->airbagp, $request->airbagl, $request->immobilizzatore, $request->chiusurac, $request->trazione, $request->fendinebbia, $request->frenata,
-        $request->servosterzo, $request->pressione, $request->esp, $request->corsia, $request->autonoma];*/
+    
         $dettagli->save();
 
 
 
-        Mail::to('jasmine@gmail.com')->send(new NewCarInsert());
+        //Mail::to('jasmine@gmail.com')->send(new NewCarInsert());
 
         return redirect()->route('dashboard')->with('msg', 'Veicolo correttamente inserito');
     }
@@ -168,10 +165,7 @@ class AnnunciController extends Controller
         $dettagli->porte = $request->porte;
         $dettagli->consumi = $request->consumi;
         $dettagli->emissioni = Ucwords($request->emissioni);
-        /*$dettagli->equipaggiamento = [$request->alzacristalli, $request->clima, $request->autoclima, $request->specchietti, $request->volantepelle, 
-        $request->volantemulti, $request->cbordo, $request->lega, $request->luci, $request->ruota, $request->abs, $request->antifurto, $request->airbagc,
-        $request->airbagp, $request->airbagl, $request->immobilizzatore, $request->chiusurac, $request->trazione, $request->fendinebbia, $request->frenata,
-        $request->servosterzo, $request->pressione, $request->esp, $request->corsia, $request->autonoma];*/
+        $dettagli->equipaggiamento = json_encode($request['equipaggiamento']);
         $dettagli->save();
 
         return redirect()->route('dashboard')->with('msg', 'Veicolo correttamente aggiornato!');

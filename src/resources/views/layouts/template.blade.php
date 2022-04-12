@@ -91,12 +91,19 @@
                           </form>
                       </li>
                   @endauth
+                  @auth
+                  <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Logged as: {{Auth::user()->name}}</a>
+                  </li>
+                  @endauth
                 </ul>
                 
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-danger" type="submit">Search</button>
+                <form class="d-flex" action="{{ route('results') }}" method="get">
+                    @csrf
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="cerca">
+                  <button class="btn btn-outline-danger" type="submit">Cerca</button>
                 </form>
+                
             </div>
         </div>
     </nav>

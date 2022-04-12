@@ -255,11 +255,8 @@ return [
             'url'  => 'admin/annunci',
         ],
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
+            'text' => 'Recensioni',
+            'url'  => 'admin/recensioni',
         ],
         ['header' => 'account_settings'],
         [

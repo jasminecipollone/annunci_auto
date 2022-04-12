@@ -19,6 +19,11 @@
 
     <h1>Le mie auto vendute</h1>
     <hr>
+    @if(Session::has('msg'))
+        <div class="alert alert-success" role="alert">
+            {{ Session::get('msg') }}
+        </div>
+    @endif
 
     @foreach ($annunci as $annuncio)
             <div class="card my-4 mx-5" style="max-width: 100%;">

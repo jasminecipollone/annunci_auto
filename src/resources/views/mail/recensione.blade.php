@@ -26,21 +26,12 @@
     <div class="container d-flex justify-content-center">
         <h1 style="font-family: 'Satisfy', serif; font-size: 5rem; color: black; text-align:center;">Golden Garage</h1>
         <hr>
-        <h3>Ciao, {{ $nome }}</h3>
+        <h3>Ciao</h3>
         <div class="row">
-            <p>L'utente {{ $interessato }} ti invia una richiesta di informazioni per il seguente annuncio:
-                <a href="{{ route('annunci.show', $annuncio->id) }}">
-                    {{ $annuncio->modelli->marche->nome }} {{ $annuncio->modelli->nome }}</a>
-            </p>
+            <p>Hai appena ricevuto una nuova recensione! Corri a leggerla! </p>
             <hr>
         </div>
 
-        <p>Id dell'annuncio: {{ $annuncio->id }}</p>
-        <br>
-        <div class="row">
-            <h3>Messaggio: </h3>
-            <p>{{ $user_message }}</p>
-        </div>
     </div>
 
 

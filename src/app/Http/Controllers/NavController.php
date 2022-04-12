@@ -70,16 +70,6 @@ class NavController extends Controller
         return back()->with('msg', 'Utente trasformato in Admin!');
     }
 
-    public function info($id, Request $request){
-        $annuncio = Annuncio::find($id);
-        $proprietario = $request->proprietario;
-        $interessato = $request->interessato;
-        $info = $request->info;
-
-        Mail::to($proprietario)->send(new InfoCar($annuncio, $interessato, $info));
-
-        return back()->with('msg', 'Email inviata con successo!');
-    }
 
     public function profile($id){
         $user = User::find($id);

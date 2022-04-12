@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Post')
+@section('title', 'Annunci')
 
 @section('content_header')
     <h1>Tutti gli annunci</h1>

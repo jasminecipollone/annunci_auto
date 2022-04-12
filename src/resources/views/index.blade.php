@@ -14,7 +14,7 @@
 
         .centered {
             position: absolute;
-            top: 20%;
+            top: 30%;
             left: 50%;
             transform: translate(-50%, -50%);
         }
@@ -24,7 +24,7 @@
         }
 
     </style>
-    <div class="main-page my-5">
+    <div class="main-page">
         <div class="centered">
             <h1 style="font-family: 'Satisfy', serif; font-size: 10rem; color: white;">Golden Garage</h1>
             <h4 class="text-center" style="font-family: 'Satisfy', serif; font-size: 5rem; color: white;">
