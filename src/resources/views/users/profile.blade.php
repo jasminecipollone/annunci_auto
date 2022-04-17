@@ -68,6 +68,7 @@
     @endif
 
     @auth
+    @if (!(Auth::id() == $user->id))
     <h2>Inserisci una recensione per {{ $user->name }}</h2>
     <form method="post" action=" {{ route('recensioni.store') }} ">
         @csrf
@@ -123,7 +124,7 @@ stars.forEach((star, index) => {
 
 
 </script>
-
+@endif
 @endauth
 
 @endsection

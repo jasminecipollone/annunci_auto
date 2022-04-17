@@ -6,7 +6,7 @@ use App\Http\Controllers\NavController;
 use App\Http\Controllers\UserAdminController;
 use App\Http\Controllers\RecensioniController;
 use App\Http\Controllers\MailController;
-
+use App\Http\Controllers\SearchController;
 use App\Models\Annuncio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -33,8 +33,21 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 //SEARCH BAR
-Route::get('/results', function (Request $request) {
-    $annunci = Annuncio::
+
+Route::get('/results', [SearchController::class, 'search'])->name('results');
+
+
+//Route::get('/results', function (Request $request) {
+    //dd($request);
+
+
+    /*$annunci = DB::table('annunci')
+    ->join('modelli', 'annunci.modello_id', '=', 'modelli.id')
+    ->select('annunci.*', 'modelli.*')
+    ->where('modelli.nome', 'ilike', '%' . $request->input('cerca') . '%')
+    ->get();*/
+
+   /*$annunci = Annuncio::
         where('titolo', 'ilike', '%' . $request->input('cerca') . '%')
         ->orWhere('stato', 'ilike', '%' . $request->input('cerca') . '%')
         ->orWhere('prezzo', 'ilike', '%' . $request->input('cerca') . '%')
@@ -48,9 +61,10 @@ Route::get('/results', function (Request $request) {
         ->orWhere('colore', 'ilike', '%' . $request->input('cerca') . '%')
         ->where('venduta', '=' , false)
         ->paginate(5);
-    return view('results', ['annunci' => $annunci], compact('annunci','request'));
 
-})->name('results');
+    return view('results', ['annunci' => $annunci], compact('annunci','request'));*/
+
+//})->name('results');
 
 //CONTROLLER NAVBAR INTERNA UTENTI LOGGATI
 Route::get('/mycars', [NavController::class, 'mycars'])->name('user.mycars')->middleware('auth');

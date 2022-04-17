@@ -21,9 +21,17 @@ class AnnunciController extends Controller
         $annunci = Annuncio::orderByDesc('created_at')
                             ->where('venduta', false)
                             ->paginate(5);
+                            
         $modelli = Modello::all();
+
+        $regioni = DB::table('comuni')
+                    ->select('regione')
+                    ->distinct()
+                    ->get();
+
+        $marche = Marca::all();
         
-        return view('annunci.index', ['annunci' => $annunci, 'modelli' => $modelli ]);
+        return view('annunci.index', ['annunci' => $annunci, 'modelli' => $modelli, 'regioni' => $regioni, 'marche' => $marche ]);
     }
 
     public function create()
