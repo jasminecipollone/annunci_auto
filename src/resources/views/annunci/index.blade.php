@@ -8,7 +8,7 @@
 
             <div class="col-2">
                 <p class="text-center">Ricerca Veicoli</p>
-                <div class="container border card-header">
+                <div class="container border card-header" id="search_bar">
                     <form action="{{ route('results') }}" method="get" enctype="multipart/form-data">
                         <div id="form1" class="">
                             @csrf
@@ -350,4 +350,5 @@
     function cilindratavalue(val) {
         document.getElementById('cilindrata').value = val + ' cc';
     }
+
 </script>

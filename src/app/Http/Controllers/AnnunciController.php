@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use App\Models\Annuncio;
 use App\Models\Marca;
+use App\Models\Immagine;
 use App\Models\Modello;
 use App\Models\Comune;
 use App\Models\Dettagli;
@@ -19,27 +20,27 @@ class AnnunciController extends Controller
     public function index()
     {
         $annunci = Annuncio::orderByDesc('created_at')
-                            ->where('venduta', false)
-                            ->paginate(5);
-                            
+            ->where('venduta', false)
+            ->paginate(5);
+
         $modelli = Modello::all();
 
         $regioni = DB::table('comuni')
-                    ->select('regione')
-                    ->distinct()
-                    ->get();
+            ->select('regione')
+            ->distinct()
+            ->get();
 
         $marche = Marca::all();
-        
-        return view('annunci.index', ['annunci' => $annunci, 'modelli' => $modelli, 'regioni' => $regioni, 'marche' => $marche ]);
+
+        return view('annunci.index', ['annunci' => $annunci, 'modelli' => $modelli, 'regioni' => $regioni, 'marche' => $marche]);
     }
 
     public function create()
     {
         $regioni = DB::table('comuni')
-                    ->select('regione')
-                    ->distinct()
-                    ->get();
+            ->select('regione')
+            ->distinct()
+            ->get();
 
         $marche = Marca::all();
         return view('annunci.create', ['marche' => $marche, 'regioni' => $regioni]);
@@ -47,7 +48,7 @@ class AnnunciController extends Controller
 
     public function store(Request $request)
     {
-        //dd($request->equipaggiamento);
+        //dd($request->file('immagine'));
         $validated = $request->validate([
             'stato' => 'required',
             'prezzo' => 'required',
@@ -80,7 +81,7 @@ class AnnunciController extends Controller
         $annuncio->descrizione = $request->descrizione;
         $annuncio->indirizzo = Ucwords($request->indirizzo);
 
-        $path = $request->file('immagine')->store('public/immagini');
+        $path = $request->file('immagine')[0]->store('public/immagini');
         $nomeimmagine = explode("/", $path);
         $annuncio->immagine = $nomeimmagine[2];
 
@@ -89,6 +90,17 @@ class AnnunciController extends Controller
         $annuncio->comune_id = $request->comune;
         $annuncio->titolo = $request->modello;
         $annuncio->save();
+
+
+        foreach ($request->file('immagine') as $image) {
+            $path = $image->store('public/immagini');
+            $nomeimmagine = explode("/", $path);
+            $immagini = new Immagine();
+            $immagini->id_annuncio = $annuncio->id;
+            $immagini->path = $nomeimmagine[2];
+            $immagini->save();
+        }
+
 
         $dettagli = new Dettagli();
         $dettagli->id = $annuncio->id;
@@ -101,7 +113,7 @@ class AnnunciController extends Controller
         $dettagli->consumi = $request->consumi;
         $dettagli->emissioni = Ucwords($request->emissioni);
         $dettagli->equipaggiamento = json_encode($request['equipaggiamento']);
-    
+
         $dettagli->save();
 
 
@@ -111,10 +123,14 @@ class AnnunciController extends Controller
         return redirect()->route('dashboard')->with('msg', 'Veicolo correttamente inserito');
     }
 
-    public function show($id){
+    public function show($id)
+    {
         $annuncio = Annuncio::findOrFail($id);
         $dettagli = Dettagli::find($id);
-        return view('annunci.show', compact('annuncio', 'dettagli'));
+        $immagini = Immagine::where('id_annuncio', $id)->get();
+        //dd($immagini);
+
+        return view('annunci.show', compact('annuncio', 'dettagli', 'immagini'));
     }
 
     public function destroy($id)
@@ -125,14 +141,14 @@ class AnnunciController extends Controller
 
         return back()->with('msg', 'Articolo segnalato come venduto!');
     }
-   
+
 
     public function edit($id)
     {
         $regioni = DB::table('comuni')
-                    ->select('regione')
-                    ->distinct()
-                    ->get();
+            ->select('regione')
+            ->distinct()
+            ->get();
 
         $marche = Marca::all();
 

@@ -191,7 +191,7 @@
           <div class="row">
             <div class="col">
               <label for="immagine" class="form-label">Seleziona una Foto</label>
-              <input class="form-control" type="file" id="immagine" name="immagine">
+              <input class="form-control" type="file" multiple id="immagine" name="immagine[]">
             </div>
           </div>
           

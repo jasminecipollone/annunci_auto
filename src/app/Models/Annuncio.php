@@ -29,4 +29,9 @@ class Annuncio extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function immagini()
+    {
+        return $this->belongsTo(Immagine::class);
+    }
 }

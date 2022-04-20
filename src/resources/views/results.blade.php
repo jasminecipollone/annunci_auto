@@ -4,8 +4,21 @@
     <div class="container-fluid" style="padding-top:60px">
         <div class="row">
 
-            <h1 class="text-center">Risultati della ricerca ({{ $annunci->count() }} risultato/i)</h1>
+            <h1 class="text-center mt-3">Risultati della ricerca ({{ $annunci->count() }} risultato/i)</h1>
 
+            @php
+                //var_dump($_GET);
+                $nuovo_checked = '';
+                $usato_checked = '';
+                if (!empty($_GET['stato'])) {
+                    if ($_GET['stato'] == 'nuovo') {
+                        $nuovo_checked = 'checked';
+                    } elseif ($_GET['stato'] == 'usato') {
+                        $usato_checked = 'checked';
+                    }
+                }
+                
+            @endphp
 
             <div class="col-2">
                 <p class="text-center">Ricerca Veicoli</p>
@@ -16,13 +29,13 @@
                             <div class="text-center mb-3">
                                 <h5>Stato Veicolo</h5>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="stato" id="inlineRadio1"
-                                        value="nuovo">
+                                    <input class="form-check-input" type="radio" name="stato" id="inlineRadio1" value="nuovo"
+                                        {{ $nuovo_checked }}>
                                     <label class="form-check-label" for="inlineRadio1">Nuovo</label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="stato" id="inlineRadio2"
-                                        value="usato">
+                                        value="usato" {{ $usato_checked }}>
                                     <label class="form-check-label" for="inlineRadio2">Usato</label>
                                 </div>
                             </div>
@@ -270,16 +283,16 @@
                     </div>
                 @endforeach
             </div>
-            
+
         </div>
         <div class="col d-flex justify-content-center">
             @php
-                $url = $_SERVER['REQUEST_URI'];   
+                $url = $_SERVER['REQUEST_URI'];
             @endphp
             {{ $annunci->withPath($url) }}
         </div>
     </div>
-    
+
 
 @endsection
 
