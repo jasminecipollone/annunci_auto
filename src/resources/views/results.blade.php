@@ -119,9 +119,9 @@
                                 <label class="form-check-label" for="potenza">
                                     <h5>Potenza: a partire da</h5>
                                 </label>
-                                <input type="range" name="potenza" min="50" max="500" value="0"
+                                <input type="range" name="potenza" min="50" max="500" value="{{ $_GET['potenza'] }}"
                                     onchange="potenzavalue(this.value);">
-                                <input type="text" id="potenza" value="" disabled readonly>
+                                <input type="text" id="potenza" value="{{ $_GET['potenza'] }}" disabled readonly>
                             </div>
                         </div>
 
@@ -156,42 +156,44 @@
                                 <label class="form-check-label" for="cilindrata">
                                     <h5>Cilindrata: a partire da</h5>
                                 </label>
-                                <input type="range" name="cilindrata" min="1200" max="6000" value="0"
-                                    onchange="cilindratavalue(this.value);">
-                                <input type="text" id="cilindrata" value="" disabled readonly>
+                                <input type="range" name="cilindrata" min="1200" max="6000"
+                                    value="{{ $_GET['cilindrata'] }}" onchange="cilindratavalue(this.value);">
+                                <input type="text" id="cilindrata" value="{{ $_GET['cilindrata'] }}" disabled readonly>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col">
                                 <h5>Prezzo da:</h5>
-                                <input type="text" name="prezzo_da" class="form-control">
+                                <input type="text" name="prezzo_da" class="form-control"
+                                    value="{{ $_GET['prezzo_da'] }}">
                             </div>
                             <div class="col">
                                 <h5>a:</h5>
-                                <input type="text" name="prezzo_a" class="form-control">
+                                <input type="text" name="prezzo_a" class="form-control"
+                                    value="{{ $_GET['prezzo_a'] }}">
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col">
                                 <h5>Anno da:</h5>
-                                <input type="text" name="anno_da" class="form-control">
+                                <input type="text" name="anno_da" class="form-control" value="{{ $_GET['anno_da'] }}">
                             </div>
                             <div class="col">
                                 <h5>a:</h5>
-                                <input type="text" name="anno_a" class="form-control">
+                                <input type="text" name="anno_a" class="form-control" value="{{ $_GET['anno_a'] }}">
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col">
                                 <h5>Km da:</h5>
-                                <input type="text" name="km_da" class="form-control">
+                                <input type="text" name="km_da" class="form-control" value="{{ $_GET['km_da'] }}">
                             </div>
                             <div class="col">
                                 <h5>a:</h5>
-                                <input type="text" name="km_a" class="form-control">
+                                <input type="text" name="km_a" class="form-control" value="{{ $_GET['km_a'] }}">
                             </div>
                         </div>
 
@@ -199,6 +201,10 @@
                             <input type="submit" name="Cerca" class="btn btn-success" value="Cerca" />
                         </div>
                     </form>
+                        <div class="row mt-3">
+                            <input type="submit" name="reset" class="btn btn-warning" value="Reset Filtri"
+                            onclick="window.location='{{ route('annunci.index') }}'" />
+                        </div>
                 </div>
             </div>
 

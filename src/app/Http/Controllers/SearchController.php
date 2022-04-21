@@ -95,7 +95,7 @@ class SearchController extends Controller
         
 
         //dd($results);
-        $annunci = $results->where('venduta', false)->paginate(5);
+        $annunci = $results->where('venduta', false)->paginate(5, array ('*', 'annunci.id as id'));
 
         return view('/results', ['annunci' => $annunci, 'regioni' => $regioni, 'marche' => $marche]);
     }

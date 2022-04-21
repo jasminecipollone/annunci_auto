@@ -18,12 +18,16 @@
     <div class="container">
 
         <h1>Le mie statistiche di vendita</h1>
+
         <hr>
+
         <div class="row">
             <p>Auto vendute : {{$vendute}}</p>
             <p>Incassi tramite la nostra piattaforma: {{$prezzov}} €</p>
         </div>
+        
         <hr>
+        
         <div class="row">
             <p>Auto in vendita : {{$vendita}}</p>
             <p>Totale dei veicoli che hai in vendita: {{$prezzon}} €</p>

@@ -14,6 +14,7 @@
     <p>Ha venduto un totale di {{ $vendute }} auto.</p>
     <p>Ha attualmente un totale di {{ $nonvendute }} auto in vendita.</p>
     <p>Media recensioni di: {{ round($media,2) }}/5</p>
+    <a href="{{ route('users.cars', $user->id)}}">Mostra tutte le auto di {{ $user->name }} in vendita</a>
     <hr>
     <h1>Feedback di {{ $user->name }}</h1>
 

@@ -98,6 +98,10 @@
                 <div class="col">
                     <a href="{{ route('user.return',$annuncio->id) }}" class="btn btn-success">Rimetti in vendita</a>
                 </div>
+
+                <div class="col">
+                    <a href="{{ route('user.removecar',$annuncio->id) }}" class="btn btn-danger">Elimina Definitivamente</a>
+                </div>
             </div>
             <hr>
         @endforeach

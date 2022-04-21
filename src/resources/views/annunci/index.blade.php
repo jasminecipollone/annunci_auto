@@ -185,6 +185,10 @@
                             <input type="submit" name="Cerca" class="btn btn-success" value="Cerca" />
                         </div>
                     </form>
+                    <div class="row mt-3">
+                        <input type="submit" name="reset" class="btn btn-warning" value="Reset Filtri"
+                        onclick="window.location='{{ route('annunci.index') }}'" />
+                    </div>
                 </div>
             </div>
 
@@ -258,7 +262,7 @@
                         </div>
 
 
-                        <div class="card-footer">
+                        <div class="card-footer d-flex justify-content-end ">
                             Inserito da {{ $annuncio->user->name }} il
                             {{ \Carbon\Carbon::parse($annuncio->created_at)->format('d-m-Y') }} ,
                             si trova a {{ $annuncio->comuni->comune }}, {{ $annuncio->comuni->provincia }},

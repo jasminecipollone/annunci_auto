@@ -71,12 +71,15 @@ Route::get('/mycars', [NavController::class, 'mycars'])->name('user.mycars')->mi
 Route::get('/carssold', [NavController::class, 'carssold'])->name('user.carssold')->middleware('auth');
 Route::get('/mystats', [NavController::class, 'mystats'])->name('user.mystats')->middleware('auth');
 Route::get('/returnsell/{id}', [NavController::class, 'returnsell'])->name('user.return')->middleware('auth');
+Route::get('carssold/{id}/remove', [NavController::class, 'removeuserpanel'])->name('user.removecar')->middleware('auth');
 
 //CONTROLLER DEGLI UTENTI
 Route::get('/user/{id}/edit', [UserController::class, 'edit'])->name('users.edit')->middleware('auth');
 Route::post('/user/{id}/update', [UserController::class, 'update'])->name('users.update')->middleware('auth');
 Route::get('/user/{id}/destroy', [UserController::class, 'destroy'])->name('users.destroy')->middleware('auth');
 Route::get('/user/{id}/profile', [NavController::class, 'profile'])->name('users.profile');
+Route::get('/user/{id}/cars', [NavController::class, 'usercars'])->name('users.cars');
+
 
 
 //CONTROLLER DEGLI ANNUNCI

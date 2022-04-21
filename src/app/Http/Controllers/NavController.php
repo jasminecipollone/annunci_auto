@@ -84,4 +84,23 @@ class NavController extends Controller
 
         return view('users.profile', ['user' => $user, 'vendute' => $vendute, 'nonvendute' => $nonvendute, 'recensioni' => $recensioni, 'media' => $media]);
     }
+
+    public function usercars($id){
+        
+        $annunci = Annuncio::where('user_id', $id)->where('venduta', false)->paginate(5);
+                //dd($annunci);
+        return view('users.cars', ['annunci' => $annunci]);
+    }
+
+    public function removeuserpanel($id){
+        $annuncio = Annuncio::find($id);
+
+        if(Auth::id() == $annuncio->user_id){
+        if (Storage::exists('public/immagini/' . $annuncio->immagine)) {
+            Storage::delete('public/immagini/' . $annuncio->immagine);
+        }
+        $annuncio->delete();
+        }
+        return back()->with('msg', 'Veicolo eliminato definitivamente!');
+    }
 }
