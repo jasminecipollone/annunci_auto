@@ -15,7 +15,7 @@ class AlterTableRecensioniAddColumnUseridwhoCommento extends Migration
     {
         Schema::table('recensioni', function (Blueprint $table) {
             $table->string('commento');
-            $table->string('user_id_who');
+            $table->bigInteger('user_id_who');
         });
     }
 

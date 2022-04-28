@@ -14,7 +14,7 @@ class AlterTableRecentioniAddColumnUsernamewho extends Migration
     public function up()
     {
         Schema::table('recensioni', function (Blueprint $table) {
-            $table->string('user_name_who');
+            $table->bigInteger('user_name_who');
         });
     }
 
