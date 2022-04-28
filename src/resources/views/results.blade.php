@@ -104,12 +104,33 @@
                                 </label>
                                 <select class="form-select" aria-label="Default select example" name="alimentazione"
                                     id="alimentazione">
+                                    @php
+                                        $benzina_checked = '';
+                                        $diesel_checked = '';
+                                        $metano_checked = '';
+                                        $gpl_checked = '';
+                                        $elettrica_checked = '';
+                                        if (!empty($_GET['alimentazione'])) {
+                                            if ($_GET['alimentazione'] == 'benzina') {
+                                                $benzina_checked = 'selected';
+                                            } elseif ($_GET['alimentazione'] == 'diesel') {
+                                                $diesel_checked = 'selected';
+                                            } elseif ($_GET['alimentazione'] == 'metano') {
+                                                $metano_checked = 'selected';
+                                            } elseif ($_GET['alimentazione'] == 'gpl') {
+                                                $gpl_checked = 'selected';
+                                            } elseif ($_GET['alimentazione'] == 'elettrica') {
+                                                $elettrica_checked = 'selected';
+                                            }
+                                        }
+                                    @endphp
+
                                     <option></option>
-                                    <option value="benzina" name="alimentazione">Benzina</option>
-                                    <option value="diesel" name="alimentazione">Diesel</option>
-                                    <option value="metano" name="alimentazione">Metano</option>
-                                    <option value="gpl" name="alimentazione">Gpl</option>
-                                    <option value="elettrica" name="alimentazione">Elettrica</option>
+                                    <option {{ $benzina_checked }} value="benzina" name="alimentazione">Benzina</option>
+                                    <option {{ $diesel_checked }} value="diesel" name="alimentazione">Diesel</option>
+                                    <option {{ $metano_checked }} value="metano" name="alimentazione">Metano</option>
+                                    <option {{ $gpl_checked }} value="gpl" name="alimentazione">Gpl</option>
+                                    <option {{ $elettrica_checked }} value="elettrica" name="alimentazione">Elettrica</option>
                                 </select>
                             </div>
                         </div>
@@ -132,9 +153,20 @@
                                 </label>
                                 <select class="form-select" aria-label="Default select example" name="rivestimenti"
                                     id="rivestimenti">
+                                    @php
+                                        $pelle_checked = '';
+                                        $tessuto_checked = '';
+                                        if (!empty($_GET['rivestimenti'])) {
+                                            if ($_GET['rivestimenti'] == 'pelle') {
+                                                $pelle_checked = 'selected';
+                                            } elseif ($_GET['rivestimenti'] == 'tessuto') {
+                                                $tessuto_checked = 'selected';
+                                            }
+                                        }
+                                    @endphp
                                     <option></option>
-                                    <option value="pelle" name="rivestimenti">Pelle</option>
-                                    <option value="tessuto" name="rivestimenti">Tessuto</option>
+                                    <option {{ $pelle_checked }} value="pelle" name="rivestimenti">Pelle</option>
+                                    <option {{ $tessuto_checked }} value="tessuto" name="rivestimenti">Tessuto</option>
                                 </select>
                             </div>
 
@@ -144,9 +176,21 @@
                                 </label>
                                 <select class="form-select" aria-label="Default select example" name="cambio"
                                     id="cambio">
+                                    @php
+                                        $manuale_checked = '';
+                                        $automatico_checked = '';
+                                        if (!empty($_GET['cambio'])) {
+                                            if ($_GET['cambio'] == 'manuale') {
+                                                $manuale_checked = 'selected';
+                                            } elseif ($_GET['cambio'] == 'automatico') {
+                                                $automatico_checked = 'selected';
+                                            }
+                                        }
+                                    @endphp
                                     <option></option>
-                                    <option value="manuale" name="cambio">Manuale</option>
-                                    <option value="automatico" name="cambio">Automatico</option>
+                                    <option {{ $manuale_checked }} value="manuale" name="cambio">Manuale</option>
+                                    <option {{ $automatico_checked }} value="automatico" name="cambio">Automatico
+                                    </option>
                                 </select>
                             </div>
                         </div>
@@ -201,10 +245,10 @@
                             <input type="submit" name="Cerca" class="btn btn-success" value="Cerca" />
                         </div>
                     </form>
-                        <div class="row mt-3">
-                            <input type="submit" name="reset" class="btn btn-warning" value="Reset Filtri"
+                    <div class="row mt-3">
+                        <input type="submit" name="reset" class="btn btn-warning" value="Reset Filtri"
                             onclick="window.location='{{ route('annunci.index') }}'" />
-                        </div>
+                    </div>
                 </div>
             </div>
 

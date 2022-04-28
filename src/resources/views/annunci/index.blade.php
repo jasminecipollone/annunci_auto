@@ -187,7 +187,7 @@
                     </form>
                     <div class="row mt-3">
                         <input type="submit" name="reset" class="btn btn-warning" value="Reset Filtri"
-                        onclick="window.location='{{ route('annunci.index') }}'" />
+                            onclick="window.location='{{ route('annunci.index') }}'" />
                     </div>
                 </div>
             </div>
@@ -354,5 +354,4 @@
     function cilindratavalue(val) {
         document.getElementById('cilindrata').value = val + ' cc';
     }
-
 </script>
