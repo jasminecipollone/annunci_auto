@@ -16,7 +16,7 @@ class CreateRecensioniTable extends Migration
         Schema::create('recensioni', function (Blueprint $table) {
             $table->id();
             $table->integer('valutazione');
-            $table->bigInteger('user_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
     }

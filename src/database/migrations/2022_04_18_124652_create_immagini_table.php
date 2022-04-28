@@ -16,7 +16,7 @@ class CreateImmaginiTable extends Migration
         Schema::create('immagini', function (Blueprint $table) {
             $table->id();
             $table->string('path');
-            $table->bigInteger('id_annuncio');
+            $table->unsignedBigInteger('id_annuncio');
             $table->timestamps();
         });
     }

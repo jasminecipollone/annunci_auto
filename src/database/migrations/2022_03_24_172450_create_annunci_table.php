@@ -27,9 +27,9 @@ class CreateAnnunciTable extends Migration
             $table->string('carrozzeria');
             $table->text('descrizione');
             $table->string('indirizzo');
-            $table->bigInteger('user_id');
-            $table->bigInteger('modello_id');
-            $table->bigInteger('comune_id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('modello_id');
+            $table->unsignedBigInteger('comune_id');
             $table->string('immagine');
             $table->timestamps();
         });

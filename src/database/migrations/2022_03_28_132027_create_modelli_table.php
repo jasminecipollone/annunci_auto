@@ -16,7 +16,7 @@ class CreateModelliTable extends Migration
         Schema::create('modelli', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
-            $table->bigInteger('marca_id');
+            $table->unsignedBigInteger('marca_id');
             $table->timestamps();
         });
     }
